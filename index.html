@@ -54,13 +54,13 @@
                 for (j = 0; j < company_keys.length; j++) { //Go through each property based on the company
                     property = company_keys[j]; //Set the property
                     console.log("DEBUG: Getting the property: " + property);
-                    if(property == "Logo") {
+                    if(property == "Logo") {    //Logo data
                         html_text += "<td><img src='" + company[property] + "' width='" + x + "' height='" + y + "'></td>";
                     }
-                    else if (property == "HomePage") {
+                    else if (property == "HomePage") {  //HomePage data
                         html_text += "<td><a href='" + company[property] + "'>" + company[property] + "</a>";
                     }
-                    else if (property == "Hubs") {
+                    else if (property == "Hubs") {  //Hubs data
                         info = company[property].Hub;
                         html_text += "<td><ul>";
                         for (k = 0; k < info.length; k++) {
@@ -68,7 +68,7 @@
                         }
                         html_text += "</ul></td>";
                     }
-                    else {
+                    else {  //Service data
                         html_text += "<td>" + company[property] + "</td>";
                     }
                 }
