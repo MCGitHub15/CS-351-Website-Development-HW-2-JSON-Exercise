@@ -34,12 +34,17 @@
 
         function generateHTML(jsonObj){
             root=jsonObj.DocumentElement;   //Obtain the root node
+            headerData = jsonObj.Mainline.Table.Header.Data; // create an array of header data from JSON file
             html_text="<html><head><title>Trucking List</title></head><body>";
             html_text+="<table border='2'>";
             html_text+="<tbody>";
             html_text+="<tr>";
             x = 300; y = 150;   //Coordinates 
             
+            for (i = 0; i < headerData.length; i++) {           //For loop, create a th with the proper data from headerData
+                html_text += "<th>" + headerData[i] + "</th>";
+            }
+
             html_text += "</tbody>";
             html_text += "</table>";
             html_text += "</body></html>";
