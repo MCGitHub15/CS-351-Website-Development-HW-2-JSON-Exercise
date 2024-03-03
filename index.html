@@ -26,7 +26,7 @@
 
             jsonObj = loadJSON(URL);
             jsonObj.onload=generateHTML(jsonObj);
-            hWin = window.open("", "Homework2", "height=800,width=600");
+            hWin = window.open("", "Homework2", "height=800,width=1000");
             hWin.document.write(html_text);
             hWin.document.close();
             console.log("Reached the end of viewJSON"); //DEBUG LOG
