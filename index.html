@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <style>
+        .centered {
+            text-align: center;
+        }
+    </style>
     <script type="text/javascript">
         var jsonObj;
         function viewJSON(what) {
@@ -35,7 +40,7 @@
         function generateHTML(jsonObj){
             root=jsonObj.DocumentElement;   //Obtain the root node
             headerData = jsonObj.Mainline.Table.Header.Data; // create an array of header data from JSON file
-            html_text="<html><head><title>Trucking List</title></head><body>";
+            html_text="<html><head><title>Top Trucking Companies</title></head><body>";
             html_text+="<table border='2'>";
             html_text+="<tbody>";
             html_text+="<tr>";
@@ -85,14 +90,14 @@
 
 <body>
 
-    <p style="text-align: center;">
-        <B>Enter URL for Trucking List JSON File</B><br><br>
+    <div class="centered">
+        <h1>Enter URL for Trucking List JSON File</h1>
         <form name="myform" method="POST" id="location">
             <!--<input id="file" type="text"><br><br>-->
             <input type="text" name="URL" maxlength="255" value="truckinglist.json"><br><br>
             <input type="button" name="submit" value="Submit Query" onClick="viewJSON(this.form)">
         </form>
-    </p>
+    </div>
 </body>
 
 </html>
