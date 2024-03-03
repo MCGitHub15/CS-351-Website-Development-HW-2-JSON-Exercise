@@ -8,7 +8,7 @@
             var URL = what.URL.value;   //take the value from what
             console.log("viewJSON has been activated!");
             function loadJSON (url) {           //Separate function to deal with loadJSOn
-                console.log("loadJSON has been activated!");
+                console.log("loadJSON has been activated!");    //DEBUG LOG
                 var xmlhttp=new XMLHttpRequest();
                 try {
                     xmlhttp.open("GET",url,false); //open, send, responseText are
@@ -29,44 +29,22 @@
             hWin = window.open("", "Homework2", "height=800,width=600");
             hWin.document.write(html_text);
             hWin.document.close();
-            console.log("Reached the end of viewJSON");
+            console.log("Reached the end of viewJSON"); //DEBUG LOG
         }
 
         function generateHTML(jsonObj){
-            root=jsonObj.DocumentElement;
-            html_text="<html><head><title>JSON Parse Result</title></head><body>";
-        }
-        /*
-        var jsonDoc;            //RAW DATA
-        var jsonPhrased;         //Obj of jsonDoc
-        function loadJSON(url) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", url, false); //open, send, responseText are
-            xmlhttp.send(); //properties of XMLHTTPRequest
-            jsonDoc = xmlhttp.responseText;
-            alert("loadJSON Function has been pressed");
-            console.log("LOGGER:loadJson has been activated.")
-            return jsonDoc;
-        }*/
-        // ....... processing document goes here
+            root=jsonObj.DocumentElement;   //Obtain the root node
+            html_text="<html><head><title>Trucking List</title></head><body>";
+            html_text+="<table border='2'>";
+            html_text+="<tbody>";
+            html_text+="<tr>";
+            x = 300; y = 150;   //Coordinates 
 
-        /*
-        function viewJson(where){
-            var URL = where.URL.value;
-            jsonDoc = loadJSON(URL);
-            jsonDoc.onload=generateHTML(jsonDoc);
-            hWin = window.open("", "HW1", "height=800,width=600");
-            hWin.document.write(html_text);
-            hWin.document.close();
-        }
-        function verifyURL(){
-            var url = document.getElementById("file").value; //Get the value of file, the text
-            if (url == "") { // If Blank
-                alert("The textbook is empty. Enter a file name!")
+            for (i = 0; i < headerData.length; i++) {
+                html_text += "<th>" + headerData[i] + "</th>";
             }
 
-        }*/
-
+            html_text += "</body></html>";
     </script>
 </head>
 
