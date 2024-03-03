@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        var jsonDoc;            //RAW DATA
+        var jsonPhrased;         //Obj of jsonDoc
+        function loadJSON(url) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, false); //open, send, responseText are
+            xmlhttp.send(); //properties of XMLHTTPRequest
+            jsonDoc = xmlhttp.responseText;
+            alert("loadJSON Function has been pressed");
+            return jsonDoc;
+        }
+        // ....... processing document goes here
+        function viewJson(where){
+            var URL = where.URL.value;
+            jsonDoc = loadJSON(URL);
+            jsonDoc.onload=generateHTML(jsonDoc);
+            hWin = window.open("", "HW1", "height=800,width=600");
+            hWin.document.write(html_text);
+            hWin.document.close();
+        }
+        function verifyURL(){
+            var url = document.getElementById("file").value; //Get the value of file, the text
+            if (url == "") { // If Blank
+                alert("The textbook is empty. Enter a file name!")
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <p style="text-align: center;">
+        <B>Enter URL for Trucking List JSON File</B><br><br>
+        <input id="file" type="text"><br><br>
+        <input type="button" name="submit" value="Submit Query" onClick="loadJSON()">
+    </p>
+</body>
+
+</html>
