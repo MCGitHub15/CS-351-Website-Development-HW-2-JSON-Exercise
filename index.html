@@ -53,6 +53,7 @@
                 var company_keys = Object.keys(company);    //Object.keys(company) returns an array of keys (property names) of each company
                 for (j = 0; j < company_keys.length; j++) { //Go through each property based on the company
                     property = company_keys[j]; //Set the property
+                    console.log("DEBUG: Getting the property: " + property);
                     if(property == "Logo") {
                         html_text += "<td><img src='" + company[property] + "' width='" + x + "' height='" + y + "'></td>";
                     }
