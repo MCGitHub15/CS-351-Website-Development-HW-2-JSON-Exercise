@@ -7,6 +7,9 @@
             text-align: center;
         }
     </style>
+
+    <title>Trucking List</title>
+
     <script type="text/javascript">
         var jsonObj;
         function viewJSON(what) {
@@ -22,7 +25,7 @@
                 }
                 catch (err) { //error to catch when the file does not exist
                     console.log("An error has occurred: " + err.message);
-                    alert("The requested file does not exist!");
+                    alert("ERROR: The requested file does not exist!");
                     return;
                 }
                 return jsonObj;
@@ -52,7 +55,7 @@
 
             arrOfCompanies = jsonObj.Mainline.Table.Row;    //Create an array of companies based on the number of rows
             if (arrOfCompanies == undefined) {
-                alert("The file that has been requested does not contain any trucking companies!");
+                alert("ERROR: The file that has been requested does not contain any trucking companies!");
             }
             else {
                 html_text += "</tr>";
