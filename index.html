@@ -3,6 +3,35 @@
 
 <head>
     <script type="text/javascript">
+        var jsonDoc;
+        function viewJSON(what) {
+            var URL = what.URL.value;   //take the value from what
+            console.log("viewJSON has been activated!");
+            function loadJSON (url) {           //Separate function to deal with loadJSOn
+                console.log("loadJSON has been activated!");
+                var xmlhttp=new XMLHttpRequest();
+                try {
+                    xmlhttp.open("GET",url,false); //open, send, responseText are
+                    xmlhttp.send(); //properties of XMLHTTPRequest
+                    jsonDoc=JSON.parse(xmlhttp.responseText);
+                }
+                catch (err) { //error to catch when the file does not ecist
+                    console.log("An error has occurred: " + err.message);
+                    alert("The requested file does not exist!");
+                    return;
+                }
+                return jsonDoc;
+            }
+            // ....... processing document goes here
+
+            jsonDoc = loadJSON(URL);
+
+        }
+
+        function generateHTML(jsonDoc){
+
+        }
+        /*
         var jsonDoc;            //RAW DATA
         var jsonPhrased;         //Obj of jsonDoc
         function loadJSON(url) {
@@ -11,9 +40,12 @@
             xmlhttp.send(); //properties of XMLHTTPRequest
             jsonDoc = xmlhttp.responseText;
             alert("loadJSON Function has been pressed");
+            console.log("LOGGER:loadJson has been activated.")
             return jsonDoc;
-        }
+        }*/
         // ....... processing document goes here
+
+        /*
         function viewJson(where){
             var URL = where.URL.value;
             jsonDoc = loadJSON(URL);
@@ -28,7 +60,7 @@
                 alert("The textbook is empty. Enter a file name!")
             }
 
-        }
+        }*/
 
     </script>
 </head>
@@ -37,8 +69,11 @@
 
     <p style="text-align: center;">
         <B>Enter URL for Trucking List JSON File</B><br><br>
-        <input id="file" type="text"><br><br>
-        <input type="button" name="submit" value="Submit Query" onClick="loadJSON()">
+        <form name="myform" method="POST" id="location">
+            <!--<input id="file" type="text"><br><br>-->
+            <input type="text" name="URL" maxlength="255" value="truckinglist.json"><br><br>
+            <input type="button" name="submit" value="Submit Query" onClick="viewJSON(this.form)">
+        </form>
     </p>
 </body>
 
