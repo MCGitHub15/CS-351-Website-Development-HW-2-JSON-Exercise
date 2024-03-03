@@ -3,7 +3,7 @@
 
 <head>
     <script type="text/javascript">
-        var jsonDoc;
+        var jsonObj;
         function viewJSON(what) {
             var URL = what.URL.value;   //take the value from what
             console.log("viewJSON has been activated!");
@@ -13,23 +13,28 @@
                 try {
                     xmlhttp.open("GET",url,false); //open, send, responseText are
                     xmlhttp.send(); //properties of XMLHTTPRequest
-                    jsonDoc=JSON.parse(xmlhttp.responseText);
+                    jsonObj=JSON.parse(xmlhttp.responseText);
                 }
-                catch (err) { //error to catch when the file does not ecist
+                catch (err) { //error to catch when the file does not exist
                     console.log("An error has occurred: " + err.message);
                     alert("The requested file does not exist!");
                     return;
                 }
-                return jsonDoc;
+                return jsonObj;
             }
             // ....... processing document goes here
 
-            jsonDoc = loadJSON(URL);
-
+            jsonObj = loadJSON(URL);
+            jsonObj.onload=generateHTML(jsonObj);
+            hWin = window.open("", "Homework2", "height=800,width=600");
+            hWin.document.write(html_text);
+            hWin.document.close();
+            console.log("Reached the end of viewJSON");
         }
 
-        function generateHTML(jsonDoc){
-
+        function generateHTML(jsonObj){
+            root=jsonObj.DocumentElement;
+            html_text="<html><head><title>JSON Parse Result</title></head><body>";
         }
         /*
         var jsonDoc;            //RAW DATA
